@@ -1,0 +1,17 @@
+# description	: Open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible
+# depends	: python3 ninja python3-setuptools
+
+name=meson
+version=0.63.1
+release=1
+source="https://github.com/mesonbuild/meson/releases/download/$version/$name-$version.tar.gz
+	hunux-meson"
+
+build() {
+	cd $name-$version
+	python3 setup.py build
+	python3 setup.py install --root=$PKG
+
+	# meson build wrapper
+	install -Dm755 ../hunux-meson $PKG/usr/bin
+}

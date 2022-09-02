@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Install
+Comment=Install Hunux GNU/Linux into HDD
+Exec=pkexec /usr/sbin/hunux-installer
+Icon=/usr/share/icons/hicolor/scalable/apps/hunux.png
+Terminal=true
+Type=Application
+X-KeepTerminal=true
+Path=
+StartupNotify=false
+Name[en_US]=Install

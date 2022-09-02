@@ -1,0 +1,18 @@
+# description : sord lihgtweight C library for sorting RDF statements in memory 
+# depends	 : serd
+
+name=sord
+version=0.16.12
+release=1
+source="https://download.drobilla.net/$name-$version.tar.xz"
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd build
+	hunux-meson \
+	 ..
+	
+	ninja
+	DESTDIR=$PKG ninja install
+}

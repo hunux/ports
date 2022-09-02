@@ -1,0 +1,5 @@
+url=https://github.com/jinfeihan57/p7zip/tags
+
+port_getver() {
+    getver_github | grep -v p7zip
+}

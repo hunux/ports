@@ -1,0 +1,11 @@
+#
+# /etc/hunpkg.repo : hunpkg repo file
+#
+# format:
+#    <repo directory> <repo url for sync>
+#
+
+/usr/ports/main       https://github.com/hunux/ports/tree/@RLS@/main
+#/usr/ports/multilib   https://github.com/hunux/ports/tree/@RLS@/multilib
+#/usr/ports/nonfree    https://github.com/hunux/ports/tree/@RLS@/nonfree
+#/usr/ports/testing    https://github.com/hunux/ports/tree/@RLS@/testing

@@ -1,0 +1,16 @@
+# description	: A simple interface for userspace programs to export a virtual filesystem to the Linux kernel
+# depends	: meson
+
+name=fuse3
+version=3.11.0
+release=1
+source="https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.xz"
+
+build() {
+	cd fuse-$version
+	hunux-meson build
+	meson compile -C build
+	DESTDIR=$PKG meson install -C build
+	rm -r $PKG/dev $PKG/etc/fuse.conf
+	rm -fr $PKG/etc/init.d
+}

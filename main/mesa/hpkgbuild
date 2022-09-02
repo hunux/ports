@@ -1,0 +1,59 @@
+# description	: OpenGL compatible 3D graphics library
+# depends	: python3-mako elfutils bison flex libxext libxdamage libxshmfence libxxf86vm libxrandr libdrm libglvnd
+
+name=mesa
+version=22.1.7
+release=1
+source="https://mesa.freedesktop.org/archive/$name-$version.tar.xz"
+
+build() {
+	cd $name-$version
+
+	_opt=""
+	_vulkan_drivers=""
+	_gallium_drivers="r300,r600,svga,swrast,nouveau,iris,virgl,crocus"
+
+	hun isinstalled libvdpau && _opt="-D gallium-vdpau=enabled" || _opt="-D gallium-vdpau=disabled"
+	hun isinstalled llvm && _opt="$_opt -D shared-llvm=enabled -D llvm=enabled" || _opt="$_opt -D shared-llvm=disabled -D llvm=disabled"
+	hun isinstalled llvm && _gallium_drivers="$_gallium_drivers,radeonsi"
+
+	if [ "$_vulkan_drivers" = "" ]; then
+		hun isinstalled xf86-video-intel && _vulkan_drivers="intel" || _vulkan_drivers=""
+		if [ ! "$_vulkan_drivers" = "" ]; then
+			hun isinstalled xf86-video-amdgpu && _vulkan_drivers="$_vulkan_drivers,amd"
+		else
+			hun isinstalled xf86-video-amdgpu && _vulkan_drivers="amd"
+		fi
+	fi
+
+	mkdir build
+	cd    build
+
+	meson \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--buildtype=plain \
+		--wrap-mode nodownload \
+		-D b_lto=true \
+		-D b_pie=true \
+		-D dri3=enabled \
+		-D egl=enabled \
+		-D gbm=enabled \
+		-D gles1=disabled \
+		-D gles2=enabled \
+		-D glx=dri \
+		-D osmesa=true \
+		-D gallium-xa=enabled \
+		-D gallium-drivers=$_gallium_drivers \
+		-D platforms=x11 \
+		-D shared-glapi=enabled \
+		-D vulkan-drivers=$_vulkan_drivers \
+		-D glvnd=true \
+		$_opt \
+	      ..
+	ninja
+	DESTDIR=$PKG ninja install
+
+	# indirect rendering symlink
+	ln -s libGLX_mesa.so.0 $PKG/usr/lib/libGLX_indirect.so.0
+}

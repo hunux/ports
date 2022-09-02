@@ -1,0 +1,10 @@
+Hunux GNU/Linux \r (\l)
+
+login:    hunux
+password: hunux
+
+login:    root
+password: root
+
+install: run 'hunux-installer' as root or using sudo
+

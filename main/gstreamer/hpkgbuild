@@ -1,0 +1,17 @@
+# description	: Streaming media framework that enables applications to share a common set of plugins
+# depends	: glib gobject-introspection meson
+
+name=gstreamer
+version=1.20.3
+release=1
+source="http://gstreamer.freedesktop.org/src/$name/$name-$version.tar.xz"
+
+build() {
+	cd $name-$version
+	hunux-meson \
+	-Dgst_debug=false \
+	-Dpackage-name="GStreamer $version (Hunux GNU/Linux)" \
+	build
+	meson compile -C build
+	DESTDIR=$PKG meson install -C build
+}

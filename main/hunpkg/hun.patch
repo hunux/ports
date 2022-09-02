@@ -1,0 +1,12 @@
+diff --git a/hun b/hun
+index ad411be..b949ae6 100755
+--- a/hun
++++ b/hun
+@@ -246,6 +246,7 @@ hun_isorphan() {
+ }
+ 
+ hun_sync() {	
++	echo ":: Please run 'portsync' to sync Official Hunux GNU/Linux ports."
+ 	checktool httpup	
+ 	needroot "Updating ports"
+ 	

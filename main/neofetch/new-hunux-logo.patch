@@ -1,0 +1,47 @@
+diff --git a/neofetch b/neofetch
+index 64fa042..4778b64 100755
+--- a/neofetch
++++ b/neofetch
+@@ -11029,21 +11029,26 @@ EOF
+         "Hunux"*)
+             set_colors 8 4
+             read -rd '' ascii_data <<'EOF'
+-${c1}   :::::::          :::::::
+-   HHHHHHHHH     HHHHHHHHH
+-   H:::::::H     H:::::::H
+-   H:::::::H     H:::::::H
+-   HH::::::H     H::::::HH
+-     H:::::H     H:::::H
+-     H:::::H     H:::::H
+-     H::::::HHHHH::::::H
+-     H:::::::::::::::::H
+-     H:::::::::::::::::H
+-     H::::::HHHHH::::::H
+-     H:::::H     H:::::H
+-     H:::::H     H:::::H
+-   HH::::::H     H::::::HH
+-   H:::::::H     H:::::::H
+-   H:::::::H     H:::::::H
+    HHHHHHHHH     HHHHHHHHH
+-            ::::::
++${c1}
++   `-`
++   HHHHHHHHH     HHHHHHHHH
++   H:::::::H     H:::::::H
++   H:::::::H     H:::::::H
++   HH::::::H     H::::::HH
++     H:::::H     H:::::H
++     H:::::H     H:::::H
++     H::::::HHHHH::::::H
++     H:::::::::::::::::H
++     H:::::::::::::::::H
++     H::::::HHHHH::::::H
++     H:::::H     H:::::H
++     H:::::H     H:::::H
++   HH::::::H     H::::::HH
++   H:::::::H     H:::::::H
++   H:::::::H     H:::::::H
++    HHHHHHHHH     HHHHHHHHH
++     `-`.
+ EOF
+         ;;
